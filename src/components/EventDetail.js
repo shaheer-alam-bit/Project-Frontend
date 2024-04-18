@@ -47,10 +47,10 @@ const EventDetail = () => {
                     </div>
                     <p>Description: {event.description}</p>
                     <p>Price:{event.price}</p>
-                    <button onClick={handleDelete}>Delete This Event</button>
+                    {<button onClick={handleDelete}>Delete This Event</button>}
                 </div>
             </div>
-            <p>Event {message}</p>
+            <p>{message}</p>
         </div>
     );
 }

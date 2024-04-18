@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const OrganizerDashboard = () => {
     const [events, setEvents] = useState([]);
@@ -10,7 +10,6 @@ const OrganizerDashboard = () => {
     const handleCreateEvent = () => {
         navigate('/createEvent')
     }
-
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -38,6 +37,9 @@ const OrganizerDashboard = () => {
                                 <small>Date: {event.date}</small>
                             </Link>
                         </div>
+                        <button>
+                            <Link style={{ textDecoration: 'none' , color: "white" }} to={`/updateEvent/${event._id}`}>Update Event</Link>
+                        </button>
                         <p className="mb-1">Description: {event.description}</p>
                         <small>Location: {event.location}</small>
                     </div>
