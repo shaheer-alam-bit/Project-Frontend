@@ -1,0 +1,58 @@
+/* styles/signup.css */
+
+.signup-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.signup-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form label {
+  margin-bottom: 10px;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.signup-form input[type="radio"] {
+  margin-right: 5px;
+}
+
+.signup-form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.signup-form button:hover {
+  background-color: #0056b3;
+}
+
+.signup-message {
+  margin-top: 10px;
+  color: green;
+}
+
+.signup-error {
+  margin-top: 10px;
+  color: red;
+}
