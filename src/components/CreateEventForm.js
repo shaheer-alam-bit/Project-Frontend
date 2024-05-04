@@ -9,7 +9,6 @@ const CreateEventForm = () => {
   const [location, setLocation] = useState('');
   const [price, setPrice] = useState('');
   const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,11 +25,9 @@ const CreateEventForm = () => {
           Authorization: `Bearer ${token}`
         }
       });
-      console.log(response.data);
-      setMessage("Event created successfully...");
+      setMessage(response.data.message);
     } catch (error) {
-      console.log("Error in creating event ", error);
-      setError("Error in creating event");
+      setMessage(error.response.data.message);
     }
   }
 
@@ -59,7 +56,6 @@ const CreateEventForm = () => {
         </div>
         <button type="submit">Create Event</button>
         {message && <p className="message">{message}</p>}
-        {error && <p className="error">{error}</p>}
       </form>
     </div>
   )

@@ -3,6 +3,7 @@ import axios from 'axios';
 import "../styles/login.css";
 import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import {jwtDecode} from 'jwt-decode'; 
 
 const Login = () => {
     const navigate = useNavigate();
@@ -14,14 +15,14 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:3000/auth/login', { email, password })
-            setMessage(response.data.msg);
+            setMessage(response.data.messsage);
             localStorage.setItem('token', response.data.token);
-            if (response.data.role === 'user')
+            const decodedToken = jwtDecode(response.data.token);
+            if (decodedToken.role === 'user')
                 navigate('/dashboard')
-            if (response.data.role === 'organizer')
+            if (decodedToken.role === 'organizer')
                 navigate('/organizer-dashboard')
         } catch (error) {
-            console.log(error)
             setMessage(error.response.data.message)
         }
     }
@@ -32,7 +33,7 @@ const Login = () => {
             const response = await axios.post('http://localhost:3000/auth/forgetPassword', { email })
             setMessage(response.data.message)
         } catch (error) {
-            console.log(error)
+            setMessage(error.response.data.message)
         }
     }
     return (

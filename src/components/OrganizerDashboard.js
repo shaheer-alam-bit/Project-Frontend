@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const OrganizerDashboard = () => {
     const [events, setEvents] = useState([]);
     const navigate = useNavigate();
+    const [message,setMessage] = useState("")
 
     const handleCreateEvent = () => {
         navigate('/createEvent')
@@ -18,10 +19,10 @@ const OrganizerDashboard = () => {
                 Authorization: `Bearer ${token}`
             }
         }).then((response) => {
-            setEvents(response.data);
+            setEvents(response.data.data);
         })
             .catch((error) => {
-                console.log("Error fetching events ", error);
+                setMessage(error.response.data.message)
             })
     }, [])
     return (
@@ -48,6 +49,7 @@ const OrganizerDashboard = () => {
             <button className="btn btn-primary mt-4" onClick={handleCreateEvent}>
                 Create New Event
             </button>
+            {message && <h3 className="message">{message}</h3>}
         </div>
     );
 }

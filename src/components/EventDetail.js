@@ -17,7 +17,7 @@ const EventDetail = () => {
             setEvent(response.data.data);
         })
             .catch((error) => {
-                console.log("Error fetching event ", error);
+                setMessage(error.response.data.message)
             })
     
     }, [id])
@@ -31,9 +31,9 @@ const EventDetail = () => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            setMessage(response.data.msg) 
+            setMessage(response.data.message) 
         }catch (error) {
-            setMessage(error.response.data.msg)
+            setMessage(error.response.data.message)
         }
     }
     return (
