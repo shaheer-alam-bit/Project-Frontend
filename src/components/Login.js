@@ -22,6 +22,8 @@ const Login = () => {
                 navigate('/dashboard')
             if (decodedToken.role === 'organizer')
                 navigate('/organizer-dashboard')
+            if (decodedToken.role === 'admin')
+                navigate('/admin-dashboard')
         } catch (error) {
             setMessage(error.response.data.message)
         }

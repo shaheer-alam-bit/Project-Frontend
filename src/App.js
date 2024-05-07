@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import EventDetail from './components/EventDetail';
 import ForgetPassword from './components/ForgetPassword';
 import UpdateEvent from './components/UpdateEvent';
+import AdminDashboard from './components/AdminDashboard';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route exact path='/event/:id' element={<EventDetail/>}></Route>
           <Route exact path='/forgetPassword' element={<ForgetPassword/>}></Route>
           <Route exact path='/updateEvent/:id' element={<UpdateEvent/>}></Route>
+          <Route exact path='/admin-dashboard' element={<AdminDashboard/>}></Route>
         </Routes>
       </div>
     </Router>
